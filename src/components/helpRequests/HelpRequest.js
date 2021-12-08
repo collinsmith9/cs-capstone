@@ -34,16 +34,13 @@ export const HelpRequest = () => {
     },
     [])
 
-    const syncUsersHelpRequests = () => {
+    const syncHelpRequests = () => {
         getUsersHelpRequests(parseInt(localStorage.getItem('code_user')))
         .then(setUserHelpRequests)
-    }
 
-    const syncAllHelpRequests = () => {
         getHelpRequestsWithUser()
         .then(setHelpRequests)
     }
-
         
     return (
         <>
@@ -53,7 +50,7 @@ export const HelpRequest = () => {
 
             {
                 !!newHelpRequestExists
-                ? <HelpRequestForm newHelpRequestExists={newHelpRequestExists} setNewHelpRequestExists={setNewHelpRequestExists} syncHelpRequests={syncUsersHelpRequests} />
+                ? <HelpRequestForm newHelpRequestExists={newHelpRequestExists} setNewHelpRequestExists={setNewHelpRequestExists} syncHelpRequests={syncHelpRequests} />
                 : ""
             }
 
@@ -66,7 +63,7 @@ export const HelpRequest = () => {
                        <h5>Problem descrip: {hr.problemDescription}</h5>
                        <p>Problem: {hr.problem}</p></div><div><button onClick={() => {
                            deleteHelpRequest(hr.id)
-                           .then(() => syncAllHelpRequests())
+                           .then(() => syncHelpRequests())
                        }}>delete help request</button></div>
                        </fieldset>
                 })
@@ -76,7 +73,7 @@ export const HelpRequest = () => {
                        <h5>Problem descrip: {hr.problemDescription}</h5>
                        <p>Problem: {hr.problem}</p></div><div><button onClick={() => {
                            deleteHelpRequest(hr.id)
-                           .then(() => syncUsersHelpRequests())
+                           .then(() => syncHelpRequests())
                        }}>delete help request</button></div>
                        </fieldset>})
             }
