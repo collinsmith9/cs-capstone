@@ -5,7 +5,6 @@ import { getEmployees, uploadHelpRequest } from "../apiManager"
 
 
 export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, syncHelpRequests}) => {
-    // const [newHelpRequestExists, setNewHelpRequestExists] = useState(false)
     const [userHelpRequests, setUserHelpRequests] = useState([])
     const [newHelpRequest, setNewHelpRequest] = useState({})
     const [employees, setEmployees] = useState([])
@@ -81,21 +80,6 @@ export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, 
         
 
         }
-
-        {/* {
-            userHelpRequests.map((hr) => {
-                return <fieldset className="help_request">
-                <div key={post.id}><h4>Posted by {post.user.name}</h4>
-                <h5>Problem descrip: {post.problemDescription}</h5>
-                <p>Problem: {post.problem}</p></div>
-                </fieldset>
-
-
-            })
-
-        } */}
-
-
         </>
     )
 }

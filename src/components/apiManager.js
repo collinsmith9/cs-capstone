@@ -72,3 +72,9 @@ export const getUsersHelpRequests = (id) => {
     return fetch(`http://localhost:8088/helpRequests?userId=${id}&_expand=user`)
     .then(res => res.json())
 }
+
+export const employeeCheck = (id) => {
+    return fetch(`http://localhost:8088/users?partner=true&id=${id}`)
+    .then(res => res.json())
+
+}
