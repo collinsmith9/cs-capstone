@@ -6,6 +6,7 @@ import { UserProfile } from "./users/UserProfile"
 import { HelpRequestForm } from "./helpRequests/HelpRequestForm"
 import { EmployeeList } from "./employees/EmployeeList"
 import { HelpRequest } from "./helpRequests/HelpRequest"
+import { EditHelpRequest } from "./helpRequests/EditHelpRequest"
 
 
 
@@ -25,6 +26,9 @@ export const ApplicationViews = () => {
         </Route>
         <Route exact path="/employees">
             <EmployeeList />
+        </Route>
+        <Route exact path="/helprequest/:hrId(\d+)">
+            <EditHelpRequest />
         </Route>
         
         

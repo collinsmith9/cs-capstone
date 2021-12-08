@@ -1,3 +1,4 @@
+import { useParams } from "react-router"
 
 
 export const existingUserCheck = (email) => {
@@ -78,3 +79,22 @@ export const employeeCheck = (id) => {
     .then(res => res.json())
 
 }
+
+
+export const fetchEditHelpRequest = (id) => {
+    return fetch(`http://localhost:8088/helpRequests/${id}`)
+    .then(res => res.json())
+}
+
+export const saveEditOfHelpRequest = (id, editOptions) => {
+    fetch(`http://localhost:8088/helpRequests/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(editOptions)
+    })
+        
+}
+
+
