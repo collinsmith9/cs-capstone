@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react"
 import { deleteHelpRequest, employeeCheck, getHelpRequestsWithUser, getUsersHelpRequests } from "../apiManager"
 import { HelpRequestForm } from "./HelpRequestForm"
 import "./HelpRequest.css"
-
+import { EditHelpRequest } from "./EditHelpRequest"
+import { Link } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 
 
 export const HelpRequest = () => {
@@ -11,6 +13,7 @@ export const HelpRequest = () => {
     const [userHelpRequests, setUserHelpRequests] = useState([])
     const [e, setE] = useState(false)
     const [isEmployee, setIsEmployee] = useState([])
+    const history = useHistory()
 
     useEffect(() => {
         getHelpRequestsWithUser()
@@ -44,9 +47,13 @@ export const HelpRequest = () => {
         
     return (
         <>
-        <h1>Your help requests</h1>
-
-            <button className="newhelprequest" onClick={ () => {setNewHelpRequestExists(true)}}>new help request</button>
+        {
+            
+            !! isEmployee[0]?.partner 
+            ? <h1>Help Requests</h1>
+            : <><h1>Your Help Requests</h1><button className="newhelprequest" onClick={ () => {setNewHelpRequestExists(true)}}>new help request</button></>
+            
+        }
 
             {
                 !!newHelpRequestExists
@@ -74,7 +81,9 @@ export const HelpRequest = () => {
                        <p>Problem: {hr.problem}</p></div><div><button onClick={() => {
                            deleteHelpRequest(hr.id)
                            .then(() => syncHelpRequests())
-                       }}>delete help request</button></div>
+                       }}>delete help request</button><button onClick={() => {
+                           history.push(`helprequest/${hr.id}`)
+                       }}>edit post</button></div>
                        </fieldset>})
             }
     
@@ -82,3 +91,6 @@ export const HelpRequest = () => {
         </>
     )
 }
+
+
+{/* <Link to={`/helprequest/${hr.id}`}></Link> */}
