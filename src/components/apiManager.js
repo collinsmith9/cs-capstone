@@ -32,3 +32,43 @@ export const uploadPost = (post) => {
     .then(response => response.json())
 
 }
+
+export const uploadHelpRequest = (helpRequest) => {
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(helpRequest)
+    }
+    return fetch(`http://localhost:8088/helpRequests`, fetchOptions)
+    .then(response => response.json())
+
+}
+
+export const getHelpRequestsWithUser = () => {
+    return fetch(`http://localhost:8088/helpRequests?_expand=user`)
+    .then(res => res.json())
+
+}
+
+export const getEmployees = () => {
+    return fetch(`http://localhost:8088/users?partner=true`)
+    .then(res => res.json())
+}
+
+export const deleteHelpRequest = (id) => {
+    return fetch(`http://localhost:8088/helpRequests/${id}`, {method: "DELETE"})
+
+
+}
+
+export const deletePost = (id) => {
+    return fetch(`http://localhost:8088/posts/${id}`, {method: "DELETE"})
+
+}
+
+export const getUsersHelpRequests = (id) => {
+    return fetch(`http://localhost:8088/helpRequests?userId=${id}&_expand=user`)
+    .then(res => res.json())
+}

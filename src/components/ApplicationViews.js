@@ -5,6 +5,7 @@ import {Route} from 'react-router-dom'
 import { UserProfile } from "./users/UserProfile"
 import { HelpRequestForm } from "./helpRequests/HelpRequestForm"
 import { EmployeeList } from "./employees/EmployeeList"
+import { HelpRequest } from "./helpRequests/HelpRequest"
 
 
 
@@ -20,7 +21,7 @@ export const ApplicationViews = () => {
             <UserProfile />
         </Route>
         <Route exact path="/helprequest">
-            <HelpRequestForm />
+            <HelpRequest />
         </Route>
         <Route exact path="/employees">
             <EmployeeList />

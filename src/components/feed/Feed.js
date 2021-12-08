@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getPostsWithUser } from "../apiManager"
+import { deletePost, getPostsWithUser } from "../apiManager"
 import { PostForm } from "./PostForm"
 import './Feed.css'
 
@@ -39,6 +39,15 @@ export const Feed = () => {
                 <div key={post.id}><h4>Posted by {post.user.name}</h4>
                 <h5>Problem descrip: {post.problemDescription}</h5>
                 <p>Problem: {post.problem}</p></div>
+                {/* {
+                    !! post.userId === parseInt(localStorage.getItem('code_user'))
+                    ? <button type="delete" onClick={() => {
+                        deletePost(post.id)
+                        .then(syncPosts)
+
+                    }}>delete post</button>
+                    : ""
+                } */}
                 </fieldset>
 
             })

@@ -2,6 +2,8 @@
 import React, { useRef, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { existingUserCheckForRegister } from "../apiManager"
+import { Link } from "react-router-dom"
+
 
 export const Register = (props) => {
     const [customer, setCustomer] = useState({
@@ -87,6 +89,7 @@ export const Register = (props) => {
                     <button type="submit"> Register </button>
                 </fieldset>
             </form>
+            <Link to="/login" className="hyperlink">Back to login</Link>
         </main>
     )
 }
