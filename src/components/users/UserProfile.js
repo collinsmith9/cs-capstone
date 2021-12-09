@@ -41,7 +41,7 @@ export const UserProfile = () => {
                     deletePost(post.id)
                     .then(() => {syncPosts()})
                 }}>Delete Post</button></div></fieldset>
-            })
+            }).reverse()
         }
         </>
         

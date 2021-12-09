@@ -73,7 +73,7 @@ export const HelpRequest = () => {
                            .then(() => syncHelpRequests())
                        }}>delete help request</button></div>
                        </fieldset>
-                })
+                }).reverse()
                 : userHelpRequests.map((hr) => {
                     return <fieldset className="helpRequest">
                        <div key={hr.id}><h4>Posted by {hr.user.name}</h4>
@@ -84,7 +84,7 @@ export const HelpRequest = () => {
                        }}>delete help request</button><button onClick={() => {
                            history.push(`helprequest/${hr.id}`)
                        }}>edit post</button></div>
-                       </fieldset>})
+                       </fieldset>}).reverse()
             }
     
         
