@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react"
 import { deletePost, employeeCheck, getPostsWithUser } from "../apiManager"
 import { PostForm } from "./PostForm"
 import './Feed.css'
+import { useHistory } from "react-router-dom"
 
 
 export const Feed = () => {
     const [createPostExists, setcreatepost] = useState(false)
     const [posts, setPosts] = useState([])
     const [isEmployee, setIsEmployee] = useState([])
+    const history = useHistory()
 
     
     useEffect(() => {
@@ -58,7 +60,11 @@ export const Feed = () => {
                 <p>Problem: {post.problem}</p><button onClick={() => {
                     deletePost(post.id)
                     .then(() => {syncPosts()})
-                }}>Delete Post</button></div>
+                }}>Delete Post</button>{
+                    !! isItTheirPost(post)
+                    ? <button onClick={() => {history.push(`/posts/${post.id}`)}}>edit</button>
+                    : ""
+                }</div>
                 </fieldset>}).reverse()
             : posts.map((post) => {
                 return <fieldset className="post">
@@ -67,10 +73,10 @@ export const Feed = () => {
                 <p>Problem: {post.problem}</p>
                 { 
                 !! isItTheirPost(post)
-                ? <button onClick={() => {
+                ? <div><button onClick={() => {
                     deletePost(post.id)
                     .then(() => {syncPosts()})
-                }}>delete post</button>
+                }}>delete post</button><button onClick={() => {history.push(`/posts/${post.id}`)}}>edit</button></div>
                 : ""
                 
                 

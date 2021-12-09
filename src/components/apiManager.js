@@ -86,6 +86,12 @@ export const fetchEditHelpRequest = (id) => {
     .then(res => res.json())
 }
 
+export const getPostToEdit = (id) => {
+    return fetch(`http://localhost:8088/posts/${id}`)
+    .then(res => res.json())
+
+}
+
 export const saveEditOfHelpRequest = (id, editOptions) => {
     fetch(`http://localhost:8088/helpRequests/${id}`, {
         method: "PUT",
@@ -94,6 +100,17 @@ export const saveEditOfHelpRequest = (id, editOptions) => {
         },
         body: JSON.stringify(editOptions)
     })
+        
+}
+
+export const saveEditOfPost = (id, editOptions, sync) => {
+    fetch(`http://localhost:8088/posts/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(editOptions)
+    }).then(sync)
         
 }
 
