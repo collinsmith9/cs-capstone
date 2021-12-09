@@ -47,14 +47,14 @@ export const Register = (props) => {
             })
     }
 
-    // user being able to hit enter is possible due to onSubmit (keyCode 13)
+    
     const updateCustomer = (evt) => {
         const copy = {...customer}
         copy[evt.target.id] = evt.target.value
         setCustomer(copy)
     }
 
-    // since update customer gets the target.value, you'll need to write a callback funtion onchange of checkbox to setCustomer(copy)
+    
 
     return (
         <main style={{ textAlign: "center" }}>

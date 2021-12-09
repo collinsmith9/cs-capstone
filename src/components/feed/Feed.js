@@ -50,7 +50,7 @@ export const Feed = () => {
                 } */}
                 </fieldset>
 
-            })
+            }).reverse()
 
 
         }
