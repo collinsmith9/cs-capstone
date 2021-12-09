@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { existingUserCheck, getAUsersPosts, getUser } from "../apiManager"
+import { deletePost, existingUserCheck, getAUsersPosts, getUser } from "../apiManager"
 
 
 
@@ -21,6 +21,11 @@ export const UserProfile = () => {
     },
     [])
 
+    const syncPosts = () => {
+        getAUsersPosts(+localStorage.getItem('code_user'))
+        .then(setUsersPosts)
+    }
+
 
     return (
         <>
@@ -32,7 +37,10 @@ export const UserProfile = () => {
                 return <fieldset className="post">
                 <div key={post.id}><h4>Posted by {post?.user?.name}</h4>
                 <h5>Problem descrip: {post?.problemDescription}</h5>
-                <p>Problem: {post?.problem}</p></div></fieldset>
+                <p>Problem: {post?.problem}</p><button onClick={() => {
+                    deletePost(post.id)
+                    .then(() => {syncPosts()})
+                }}>Delete Post</button></div></fieldset>
             })
         }
         </>

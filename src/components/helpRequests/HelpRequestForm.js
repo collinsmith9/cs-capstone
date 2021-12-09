@@ -43,10 +43,10 @@ export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, 
                 <fieldset>
                     <label>Problem Description</label>
                     <input onChange={(evt) => {
-                        const copy = {...updatedHelpRequest}
-                        copy.problemDescription = evt.target.value
-                        copy.userId = +localStorage.getItem('code_user')
-                        setUpdatedHelpRequest(copy)
+                            const copy = {...updatedHelpRequest}
+                            copy.problemDescription = evt.target.value
+                            copy.userId = +localStorage.getItem('code_user')
+                            setUpdatedHelpRequest(copy)
                     }} type="text" id="problem_descrip" placeholder={placeholder.problemDescription}  required autoFocus />
                 </fieldset>
                 <fieldset>
@@ -81,6 +81,8 @@ export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, 
                         }}>Cancel</button>
                     <button type="submit_post" onClick={ () => {
                         handleEdit()
+                        // syncHelpRequests()
+                        
                         }}> Save Changes </button>
                 </fieldset>
             </form>

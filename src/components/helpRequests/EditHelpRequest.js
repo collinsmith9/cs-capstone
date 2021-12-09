@@ -5,7 +5,7 @@ import { HelpRequestForm } from "./HelpRequestForm"
 
 
 
-
+import {HelpRequest} from "./HelpRequest"
 
 
 export const EditHelpRequest = () => {
