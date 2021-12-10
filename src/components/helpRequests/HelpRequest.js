@@ -81,9 +81,9 @@ export const HelpRequest = () => {
                        <p>Problem: {hr.problem}</p></div><div><button onClick={() => {
                            deleteHelpRequest(hr.id)
                            .then(() => syncHelpRequests())
-                       }}>delete help request</button><button onClick={() => {
+                       }}>Delete</button><button onClick={() => {
                            history.push(`helprequest/${hr.id}`)
-                       }}>edit post</button></div>
+                       }}>Edit</button></div>
                        </fieldset>}).reverse()
             }
     

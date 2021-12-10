@@ -7,6 +7,7 @@ import { HelpRequestForm } from "./helpRequests/HelpRequestForm"
 import { EmployeeList } from "./employees/EmployeeList"
 import { HelpRequest } from "./helpRequests/HelpRequest"
 import { EditHelpRequest } from "./helpRequests/EditHelpRequest"
+import { EditPost } from "./feed/EditPost"
 
 
 
@@ -29,6 +30,9 @@ export const ApplicationViews = () => {
         </Route>
         <Route exact path="/helprequest/:hrId(\d+)">
             <EditHelpRequest />
+        </Route>
+        <Route exact path="/posts/:postId(\d+)">
+            <EditPost />
         </Route>
         
         
