@@ -16,7 +16,12 @@ export const EditHelpRequest = () => {
 
     useEffect(() => {
         
-        fetchEditHelpRequest(hrId).then(setHelpRequest)
+        fetchEditHelpRequest(hrId).then( (data) => {
+            setHelpRequest(data)
+            setUpdatedHelpRequest(data)
+
+        }
+            )
 
     },
     [ hrId ])
