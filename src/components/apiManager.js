@@ -92,14 +92,14 @@ export const getPostToEdit = (id) => {
 
 }
 
-export const saveEditOfHelpRequest = (id, editOptions) => {
+export const saveEditOfHelpRequest = (id, editOptions, sync) => {
     fetch(`http://localhost:8088/helpRequests/${id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(editOptions)
-    })
+    }).then(sync)
         
 }
 

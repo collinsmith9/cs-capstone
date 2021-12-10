@@ -26,8 +26,8 @@ export const EditHelpRequest = () => {
     },
     [ hrId ])
 
-    const handleEdit = () => {
-        saveEditOfHelpRequest(hrId, updatedHelpRequest )
+    const handleEdit = (x) => {
+        saveEditOfHelpRequest(hrId, updatedHelpRequest, x )
         history.push("/helprequest")
         
     }
