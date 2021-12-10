@@ -80,7 +80,7 @@ export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, 
                         setUpdatedHelpRequest({})
                         }}>Cancel</button>
                     <button type="submit_post" onClick={ () => {
-                        handleEdit()
+                        handleEdit(syncHelpRequests)
                         // syncHelpRequests()
                         
                         }}> Save Changes </button>

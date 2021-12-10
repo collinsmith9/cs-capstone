@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { useHistory } from "react-router-dom"
 import { deletePost, existingUserCheck, getAUsersPosts, getUser } from "../apiManager"
 
 
@@ -6,6 +7,7 @@ import { deletePost, existingUserCheck, getAUsersPosts, getUser } from "../apiMa
 export const UserProfile = () => {
     const [usersPosts, setUsersPosts] = useState([])
     const [currentUser, setCurrentUser] = useState([])
+    const history = useHistory()
 
     useEffect(() => {
         getAUsersPosts(+localStorage.getItem('code_user'))
@@ -40,7 +42,7 @@ export const UserProfile = () => {
                 <p>Problem: {post?.problem}</p><button onClick={() => {
                     deletePost(post.id)
                     .then(() => {syncPosts()})
-                }}>Delete Post</button></div></fieldset>
+                }}>Delete Post</button><button onClick={() => {history.push(`/posts/${post.id}`)}}>edit</button></div></fieldset>
             }).reverse()
         }
         </>
