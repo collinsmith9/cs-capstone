@@ -16,7 +16,11 @@ export const EditPost = () => {
 
     useEffect(() => {
         getPostToEdit(postId)
-        .then(setPostToEdit)
+        .then( (data) => {
+            setPostToEdit(data)
+            setUpdatedPost(data)
+            
+        })
 
     },
     [])
