@@ -1,4 +1,4 @@
-import { useParams } from "react-router"
+
 
 
 export const existingUserCheck = (email) => {
@@ -99,7 +99,7 @@ export const saveEditOfHelpRequest = (id, editOptions, sync) => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(editOptions)
-    }).then(sync)
+    })
         
 }
 
@@ -110,7 +110,8 @@ export const saveEditOfPost = (id, editOptions, sync) => {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(editOptions)
-    }).then(sync)
+    })
+
         
 }
 

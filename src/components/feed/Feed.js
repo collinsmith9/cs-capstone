@@ -42,20 +42,20 @@ export const Feed = () => {
 
     return (
         <>
-        <h1>Welcome to Collin's Coding Help</h1>
-        <button type="createPost" onClick={(evt) => {
+        <h1 key={'welcome_message'}>Welcome to Collin's Coding Help</h1>
+        <button key={"create_post"} type="createPost" onClick={(evt) => {
             setcreatepost(true)
         }}>Create Post</button>
         {
             !!createPostExists
-            ? <PostForm createPostExists={createPostExists} setcreatepost={setcreatepost} syncPosts={syncPosts} /> 
+            ? <PostForm setcreatepost={setcreatepost} syncPosts={syncPosts} /> 
             : ""
         }
         {
             !! isEmployee[0]?.partner
             ? posts.map((post) => {
-                return <fieldset className="post">
-                <div key={post.id}><h4>Posted by {post.user.name}</h4>
+                return <fieldset key={`post--${post.id}`} className="post">
+                <div><h4>Posted by {post.user.name}</h4>
                 <h5>Problem descrip: {post.problemDescription}</h5>
                 <p>Problem: {post.problem}</p><button onClick={() => {
                     deletePost(post.id)
@@ -67,8 +67,8 @@ export const Feed = () => {
                 }</div>
                 </fieldset>}).reverse()
             : posts.map((post) => {
-                return <fieldset className="post">
-                <div key={post.id}><h4>Posted by {post.user.name}</h4>
+                return <fieldset key={`post--${post.id}`}  className="post">
+                <div><h4>Posted by {post.user.name}</h4>
                 <h5>Problem descrip: {post.problemDescription}</h5>
                 <p>Problem: {post.problem}</p>
                 { 
