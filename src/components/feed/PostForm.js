@@ -30,7 +30,7 @@ export const PostForm = ({createPostExists, setcreatepost, syncPosts, postId, po
                 <label>Describe Your Problem</label>
                 <input onChange={(evt) => {
                     const copy = {...updatedPost}
-                    copy.userId = +localStorage.getItem('code_user')
+                    // copy.userId = +localStorage.getItem('code_user')
                     copy.problemDescription = evt.target.value
                     setUpdatedPost(copy)
                 }} type="text" id="problem_descrip" placeholder={postToEdit.problemDescription}  required autoFocus />
@@ -46,7 +46,7 @@ export const PostForm = ({createPostExists, setcreatepost, syncPosts, postId, po
             
             <fieldset>
                 <button type="cancel" onClick={() => {history.push('/')}}>Cancel</button>
-                <button type="submit_post" onClick={() => {handleEditOfPost(syncPosts)}}>Save Changes</button>
+                <button type="submit_post" onClick={handleEditOfPost}>Save Changes</button>
             </fieldset>
             </form>
         : <form className="createPostForm" >

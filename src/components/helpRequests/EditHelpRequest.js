@@ -13,6 +13,7 @@ export const EditHelpRequest = () => {
     const {hrId} = useParams()
     const [updatedHelpRequest, setUpdatedHelpRequest] = useState({})
     const history = useHistory()
+    const [test, setTest] = useState(false)
 
     useEffect(() => {
         
@@ -26,11 +27,45 @@ export const EditHelpRequest = () => {
     },
     [ hrId ])
 
-    const handleEdit = (x) => {
-        saveEditOfHelpRequest(hrId, updatedHelpRequest, x )
+    const handleEdit = (e) => {
+        e.preventDefault()
+        // history.push('/helprequest')
+        // saveEditOfHelpRequest(hrId, updatedHelpRequest )
+        // // .then( () => {setTest(true)})
+
+    //     fetch(`http://localhost:8088/helpRequests/${hrId}`, {
+    //     method: "PUT",
+    //     headers: {
+    //         "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify(updatedHelpRequest)
+    // }).then(() => {history.push("/helprequest")})
+
+    const editedHR = {
+        employeeId: updatedHelpRequest.employeeId,
+        problem: updatedHelpRequest.problem,
+        problemDescription: updatedHelpRequest.problemDescription,
+        userId: updatedHelpRequest.userId
+    }
+
+
+    fetch(`http://localhost:8088/helpRequests/${hrId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(editedHR)
+    }).then(() => {
         history.push("/helprequest")
+    })
+
+
+
+        
         
     }
+
+
     
 
     return (

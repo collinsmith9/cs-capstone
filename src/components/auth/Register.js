@@ -16,11 +16,6 @@ export const Register = (props) => {
 
     const history = useHistory()
 
-    // const existingUserCheck = () => {
-    //     return fetch(`http://localhost:8088/customers?email=${customer.email}`)
-    //         .then(res => res.json())
-    //         .then(user => !!user.length)
-    // }
     const handleRegister = (e) => {
         e.preventDefault()
         existingUserCheckForRegister(customer)

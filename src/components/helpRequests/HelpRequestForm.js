@@ -39,7 +39,7 @@ export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, 
         {
             !!hrId
             ?   
-                <form className="helprequestform" >
+                <form className="helprequestform"  >
                 <fieldset>
                     <label>Problem Description</label>
                     <input onChange={(evt) => {
@@ -75,15 +75,15 @@ export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, 
                
                 
                 <fieldset>
-                    <button type="cancel" onClick={() => { 
+                    <button type="cancel" key="cancel" onClick={() => { 
                         history.push("/helprequest")
                         setUpdatedHelpRequest({})
                         }}>Cancel</button>
-                    <button type="submit_post" onClick={ () => {
-                        handleEdit(syncHelpRequests)
+                    <button type="submit" key="sub" onClick={handleEdit}
+                        
                         // syncHelpRequests()
                         
-                        }}> Save Changes </button>
+                        > Save Changes </button>
                 </fieldset>
             </form>
                 
