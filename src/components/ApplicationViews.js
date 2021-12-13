@@ -3,7 +3,6 @@ import React from "react"
 import {Feed} from "./feed/Feed"
 import {Route} from 'react-router-dom'
 import { UserProfile } from "./users/UserProfile"
-import { HelpRequestForm } from "./helpRequests/HelpRequestForm"
 import { EmployeeList } from "./employees/EmployeeList"
 import { HelpRequest } from "./helpRequests/HelpRequest"
 import { EditHelpRequest } from "./helpRequests/EditHelpRequest"

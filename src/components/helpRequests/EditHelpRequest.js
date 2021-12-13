@@ -1,45 +1,28 @@
 import React, { useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
-import { fetchEditHelpRequest, saveEditOfHelpRequest } from "../apiManager"
+import { fetchEditHelpRequest } from "../apiManager"
 import { HelpRequestForm } from "./HelpRequestForm"
-
-
-
-import {HelpRequest} from "./HelpRequest"
-
 
 export const EditHelpRequest = () => {
     const [helpRequest, setHelpRequest] = useState({})
     const {hrId} = useParams()
     const [updatedHelpRequest, setUpdatedHelpRequest] = useState({})
     const history = useHistory()
-    const [test, setTest] = useState(false)
+    
 
     useEffect(() => {
         
         fetchEditHelpRequest(hrId).then( (data) => {
             setHelpRequest(data)
             setUpdatedHelpRequest(data)
-
         }
             )
 
     },
-    [ hrId ])
+    [hrId])
 
     const handleEdit = (e) => {
         e.preventDefault()
-        // history.push('/helprequest')
-        // saveEditOfHelpRequest(hrId, updatedHelpRequest )
-        // // .then( () => {setTest(true)})
-
-    //     fetch(`http://localhost:8088/helpRequests/${hrId}`, {
-    //     method: "PUT",
-    //     headers: {
-    //         "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify(updatedHelpRequest)
-    // }).then(() => {history.push("/helprequest")})
 
     const editedHR = {
         employeeId: updatedHelpRequest.employeeId,
@@ -58,15 +41,7 @@ export const EditHelpRequest = () => {
     }).then(() => {
         history.push("/helprequest")
     })
-
-
-
-        
-        
     }
-
-
-    
 
     return (
         <>

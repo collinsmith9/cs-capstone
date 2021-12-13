@@ -16,11 +16,11 @@ export const EmployeeList = () => {
 
     return (
         <>
-        <h1>Employee List</h1>
+        <h1 key={'employeelistwelcome'}>Employee List</h1>
         {
             employees.map((emp) => {
-                return <fieldset className="employee">
-                <div key={emp.id}><h4>{emp.name}</h4>
+                return <fieldset key={`employee--${emp.id}`}  className="employee">
+                <div><h4>{emp.name}</h4>
                 <h5>Email: {emp.email}</h5>
                 </div>
                 </fieldset>

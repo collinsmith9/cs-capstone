@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react"
 import { deleteHelpRequest, employeeCheck, getHelpRequestsWithUser, getUsersHelpRequests } from "../apiManager"
 import { HelpRequestForm } from "./HelpRequestForm"
 import "./HelpRequest.css"
-import { EditHelpRequest } from "./EditHelpRequest"
-import { Link } from "react-router-dom"
 import { useHistory } from "react-router-dom"
 
 
@@ -11,7 +9,6 @@ export const HelpRequest = () => {
     const [newHelpRequestExists, setNewHelpRequestExists] = useState(false)
     const [helpRequests, setHelpRequests] = useState([])
     const [userHelpRequests, setUserHelpRequests] = useState([])
-    const [e, setE] = useState(false)
     const [isEmployee, setIsEmployee] = useState([])
     const history = useHistory()
 
@@ -65,8 +62,8 @@ export const HelpRequest = () => {
                 
                 !! isEmployee[0]?.partner
                 ? helpRequests.map((hr) => {
-                    return <fieldset className="helpRequest">
-                       <div key={hr.id}><h4>Posted by {hr.user.name}</h4>
+                    return <fieldset key={`hr--${hr.id}`} className="helpRequest">
+                       <div><h4>Posted by {hr.user.name}</h4>
                        <h5>Problem descrip: {hr.problemDescription}</h5>
                        <p>Problem: {hr.problem}</p></div><div><button onClick={() => {
                            deleteHelpRequest(hr.id)
@@ -75,18 +72,16 @@ export const HelpRequest = () => {
                        </fieldset>
                 }).reverse()
                 : userHelpRequests.map((hr) => {
-                    return <fieldset className="helpRequest">
-                       <div key={hr.id}><h4>Posted by {hr.user.name}</h4>
+                    return <fieldset key={`hr--${hr.id}`} className="helpRequest">
+                       <div><h4>Posted by {hr.user.name}</h4>
                        <h5>Problem descrip: {hr.problemDescription}</h5>
                        <p>Problem: {hr.problem}</p></div><div><button onClick={() => {
                            deleteHelpRequest(hr.id)
                            .then(() => syncHelpRequests())
                        }}>Delete</button>
                        
-                       <button key={"test"} onClick={() => {
-                        //    setE(true)
-                        //    <EditHelpRequest />
-                           history.push(`helprequest/${hr.id}`) //hereee
+                       <button onClick={() => {
+                           history.push(`helprequest/${hr.id}`) 
                        }}>Edit</button>
                        
                        </div>
@@ -97,6 +92,3 @@ export const HelpRequest = () => {
         </>
     )
 }
-
-
-{/* <Link to={`/helprequest/${hr.id}`}></Link> */}

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router"
-import { getEmployees, saveEditOfHelpRequest, uploadHelpRequest } from "../apiManager"
+import { getEmployees, uploadHelpRequest } from "../apiManager"
 
 
 
 
 export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, syncHelpRequests, hrId, placeholder, setPlaceHolder, updatedHelpRequest, setUpdatedHelpRequest, handleEdit}) => {
-    const [userHelpRequests, setUserHelpRequests] = useState([])
     const [newHelpRequest, setNewHelpRequest] = useState({})
     const [employees, setEmployees] = useState([])
     const history = useHistory()
@@ -39,7 +38,7 @@ export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, 
         {
             !!hrId
             ?   
-                <form className="helprequestform"  >
+                <div key={`divforform`}>
                 <fieldset>
                     <label>Problem Description</label>
                     <input onChange={(evt) => {
@@ -67,7 +66,7 @@ export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, 
                        <option value="0">Select an employee</option>
                        {
                            employees.map((employee) => {
-                               return <option value={employee.id}>{employee.name}</option>
+                               return <option key={`employee--${employee.id}`} value={employee.id}>{employee.name}</option>
                            })
                        }
                    </select>
@@ -80,15 +79,12 @@ export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, 
                         setUpdatedHelpRequest({})
                         }}>Cancel</button>
                     <button type="submit" key="sub" onClick={handleEdit}
-                        
-                        // syncHelpRequests()
-                        
                         > Save Changes </button>
                 </fieldset>
-            </form>
+            </div>
                 
             :   
-                <form className="helprequestform" >
+                <div key={`divforform2`}>
                 <fieldset>
                     <label>Describe Your Problem</label>
                     <input onChange={(evt) => {
@@ -115,7 +111,7 @@ export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, 
                        <option value="0">Select an employee</option>
                        {
                            employees.map((employee) => {
-                               return <option value={employee.id}>{employee.name}</option>
+                               return <option key={`employeee--${employee.id}`} value={employee.id}>{employee.name}</option>
                            })
                        }
                    </select>
@@ -126,7 +122,7 @@ export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, 
                     <button type="cancel" onClick={() => {setNewHelpRequestExists(false)}}>Cancel</button>
                     <button type="submit_post" onClick={handleNewHelpRequest}> Submit Post </button>
                 </fieldset>
-            </form>
+            </div>
 
         }
                 
