@@ -20,7 +20,7 @@ export const EditHelpRequest = () => {
 
     },
     [hrId])
-
+    
     const handleEdit = (e) => {
         e.preventDefault()
 
