@@ -1,17 +1,11 @@
-/* .employee {
+.userprofile__header {
     display: flex;
-    margin-top: 25px;
-
-} */
-
-.employee__header {
-    display: flex;
-    justify-content: center; 
+    justify-content: center;
     margin-top: 25px;
     margin-bottom: 5px;
 }
 
-.employee {
+.userprofile__post {
     margin: auto;
     text-align: center;
     border: 1px solid black;

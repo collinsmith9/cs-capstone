@@ -40,12 +40,21 @@ export const Feed = () => {
 
     }
 
+    const scrollToTop = () =>{
+        window.scrollTo({
+          top: 0, 
+          behavior: 'auto'
+          /* you can also use 'auto' behaviour
+             in place of 'smooth' */
+        });
+      };
+
     return (
         <>
-        <h1 key={'welcome_message'}>Welcome to Collin's Coding Help</h1>
-        <button key={"create_post"} type="createPost" onClick={(evt) => {
+        <div className="feed__header"><h1 key={'welcome_message'}>Welcome to Collin's Coding Help</h1></div>
+        <div className="testtt"><button key={"create_post"} type="createPost" onClick={(evt) => {
             setcreatepost(true)
-        }}>Create Post</button>
+        }}>Create Post</button></div>
         {
             !!createPostExists
             ? <PostForm setcreatepost={setcreatepost} syncPosts={syncPosts} /> 
@@ -54,7 +63,7 @@ export const Feed = () => {
         {
             !! isEmployee[0]?.partner
             ? posts.map((post) => {
-                return <fieldset key={`post--${post.id}`} className="post">
+                return <div key={`post--${post.id}`} className="post">
                 <div><h4>Posted by {post.user.name}</h4>
                 <h5>Problem descrip: {post.problemDescription}</h5>
                 <p>Problem: {post.problem}</p><button onClick={() => {
@@ -65,7 +74,7 @@ export const Feed = () => {
                     ? <button onClick={() => {history.push(`/posts/${post.id}`)}}>edit</button>
                     : ""
                 }</div>
-                </fieldset>}).reverse()
+                </div>}).reverse()
             : posts.map((post) => {
                 return <fieldset key={`post--${post.id}`}  className="post">
                 <div><h4>Posted by {post.user.name}</h4>
@@ -88,6 +97,9 @@ export const Feed = () => {
 
 
         }
+        
+            <button onClick={() => {scrollToTop()}}>scroll to top</button>
+        
         </>
     )
 }

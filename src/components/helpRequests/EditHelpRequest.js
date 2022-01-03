@@ -46,16 +46,16 @@ export const EditHelpRequest = () => {
     return (
         <>
 
-        <h1>edit help request</h1>
+        <h1 className="edithr__header">edit help request</h1>
 
-        <h2>Current help request</h2>
+        <h2 className="edithr__header">Current help request</h2>
         <fieldset className="helpRequest">
         <div key={helpRequest?.id}>
         <h5>Problem descrip: {helpRequest?.problemDescription}</h5>
         <p>Problem: {helpRequest?.problem}</p></div>
         </fieldset>
 
-        <h2>Edit fields necessary.</h2>
+        <h2 className="edithr__header">Edit fields necessary.</h2>
         
         <HelpRequestForm hrId={hrId} placeholder={helpRequest} setPlaceHolder={setHelpRequest} updatedHelpRequest={updatedHelpRequest} setUpdatedHelpRequest={setUpdatedHelpRequest} handleEdit={handleEdit} />
         

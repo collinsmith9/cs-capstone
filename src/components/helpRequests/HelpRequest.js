@@ -84,9 +84,15 @@ export const HelpRequest = () => {
         {
             
             !! isEmployee[0]?.partner 
-            ? <h1>Help Requests</h1>
-            : <><h1>Your Help Requests</h1><button className="newhelprequest" onClick={ () => {setNewHelpRequestExists(true)}}>new help request</button></>
+            ? <div className="hr__header"><h1>Help Requests</h1></div>
+            : <div className="hr__header"><h1 className="newHR__button">Your Help Requests</h1></div>
             
+        }
+
+        {
+            !! isEmployee[0]?.partner
+            ? ""
+            : <div className="newhr__button"><button onClick={ () => {setNewHelpRequestExists(true)}}>new help request</button></div>
         }
 
             {
@@ -108,7 +114,7 @@ export const HelpRequest = () => {
                        </div><div><button onClick={() => {
                            deleteHelpRequest(hr.id)
                            .then(() => syncHelpRequests())
-                       }}>delete help request</button><select onChange={(evt) => {
+                       }}>delete help request</button><select id="hxr" onChange={(evt) => {
                            handleEdit(evt.target.value, hr.id, hr)
                        }}><option value="0">Select an employee</option>
                        {

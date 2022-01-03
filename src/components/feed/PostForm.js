@@ -25,50 +25,50 @@ export const PostForm = ({ setcreatepost, syncPosts, postId, postToEdit, updated
         <>
         {
             !! postId 
-            ? <div>
-            <fieldset>
+            ? <div className="post__form">
+            <div>
                 <label>Describe Your Problem</label>
                 <input onChange={(evt) => {
                     const copy = {...updatedPost}
                     copy.problemDescription = evt.target.value
                     setUpdatedPost(copy)
                 }} type="text" id="problem_descrip" placeholder={postToEdit.problemDescription}  required autoFocus />
-            </fieldset>
-            <fieldset>
+            </div>
+            <div>
                 <label>Copy and Paste your problem here</label>
                 <input onChange={(evt) => {
                     const copy = {...updatedPost}
                     copy.problem = evt.target.value
                     setUpdatedPost(copy)
                 }} type="text" id="problem_paste" placeholder={postToEdit.problem}  required autoFocus />
-            </fieldset>
+            </div>
             
-            <fieldset>
+            <div>
                 <button type="cancel" onClick={() => {history.push('/')}}>Cancel</button>
                 <button type="submit_post" onClick={handleEditOfPost}>Save Changes</button>
-            </fieldset>
             </div>
-            : <div><fieldset>
+            </div>
+            : <div className="post__form"><div>
             <label>Describe Your Problem</label>
             <input onChange={(evt) => {
                 const copy = {...newPost}
                 copy.problemDescription = evt.target.value
                 setNewPost(copy)
             }} type="text" id="problem_descrip" placeholder="Describe Your Problem Here"  required autoFocus />
-        </fieldset>
-        <fieldset>
+        </div>
+        <div>
             <label>Copy and Paste your problem here</label>
             <input onChange={(evt) => {
                 const copy = {...newPost}
                 copy.problem = evt.target.value
                 setNewPost(copy)
             }} type="text" id="problem_paste" placeholder="Paste Here"  required autoFocus />
-        </fieldset>
+        </div>
         
-        <fieldset>
+        <div>
             <button type="cancel" onClick={() => {setcreatepost(false)}}>Cancel</button>
             <button type="submit_post" onClick={handlePost}> Submit Post </button>
-        </fieldset></div>
+        </div></div>
 }
         </>
     )

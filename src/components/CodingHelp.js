@@ -4,6 +4,7 @@ import { Login } from "./auth/Login";
 import { NavBar } from "./nav/NavBar";
 import { ApplicationViews } from "./ApplicationViews";
 import { Register } from "./auth/Register";
+import { Footer } from "./footer/Footer";
 
 
 
@@ -19,6 +20,7 @@ export const CodingHelp = () => {
             <>
               <NavBar />
               <ApplicationViews />
+              <Footer />
             </>
           );
         } else {
