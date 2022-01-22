@@ -1,4 +1,42 @@
+
+
 .post {
-    display: flex;
+    margin: auto;
+    text-align: center;
+    border: 1px solid black;
+    width: 75%;
+    border-radius: 6px;
+    padding: 20px; 
     margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.feed__header {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+.testtt {
+    display: flex;
+    justify-content: center;
+}
+
+.post__form {
+    margin: auto;
+    text-align: center;
+    border: 1px solid black;
+    width: 75%;
+    border-radius: 6px;
+    padding: 20px; 
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+}
+
+.editpost__header {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
 }

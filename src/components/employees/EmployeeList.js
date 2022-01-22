@@ -16,7 +16,7 @@ export const EmployeeList = () => {
 
     return (
         <>
-        <h1 key={'employeelistwelcome'}>Employee List</h1>
+        <div className="employee__header"><h1 key={'employeelistwelcome'}>Employee List</h1></div>
         {
             employees.map((emp) => {
                 return <fieldset key={`employee--${emp.id}`}  className="employee">

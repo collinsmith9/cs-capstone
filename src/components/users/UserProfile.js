@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { deletePost, getAUsersPosts, getUser } from "../apiManager"
+import "./UserProfile.css"
 
 
 
@@ -32,11 +33,11 @@ export const UserProfile = () => {
     return (
         <>
 
-        <h1> {currentUser[0]?.name}'s Profile</h1>
+        <div className="userprofile__header"><h1> {currentUser?.name}'s Profile</h1></div>
 
         {
             usersPosts.map((post) => {
-                return <fieldset key={`post--${post.id}`} className="post">
+                return <fieldset key={`post--${post.id}`} className="userprofile__post">
                 <div><h4>Posted by {post?.user?.name}</h4>
                 <h5>Problem descrip: {post?.problemDescription}</h5>
                 <p>Problem: {post?.problem}</p><button  onClick={() => {

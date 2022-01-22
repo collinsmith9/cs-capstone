@@ -45,7 +45,7 @@ export const EditPost = () => {
 
     return (
         <>
-        <h1>Edit Post View</h1>
+        <h1 className="editpost__header">Edit Post View</h1>
 
         <PostForm postId={postId} postToEdit={postToEdit} updatedPost={updatedPost} setUpdatedPost={setUpdatedPost} handleEditOfPost={handleEditOfPost} />
         </>
