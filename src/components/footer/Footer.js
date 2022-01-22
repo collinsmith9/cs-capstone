@@ -5,12 +5,10 @@ import "./Footer.css";
 
 export const Footer = () => {
 
-
-
     const scrollToTop = () =>{
         window.scrollTo({
           top: 0, 
-          behavior: 'auto'
+          behavior: 'smooth'
           /* you can also use 'auto' behaviour
              in place of 'smooth' */
         });

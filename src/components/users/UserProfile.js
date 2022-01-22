@@ -33,7 +33,7 @@ export const UserProfile = () => {
     return (
         <>
 
-        <div className="userprofile__header"><h1> {currentUser[0]?.name}'s Profile</h1></div>
+        <div className="userprofile__header"><h1> {currentUser?.name}'s Profile</h1></div>
 
         {
             usersPosts.map((post) => {

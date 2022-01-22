@@ -1,8 +1,4 @@
-/* .helpRequest {
-    display: flex;
-    margin-top: 25px;
 
-} */
 
 .hr__header {
     display: flex;
@@ -15,12 +11,6 @@
     display: flex;
     justify-content: center;
 }
-
-/* .newHR__button {
-    margin-top: 25px;
-    margin-bottom: 25px;
-    
-} */
 
 .helpRequest {
     margin: auto;
