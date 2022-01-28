@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 import { useHistory } from "react-router-dom"
 import { uploadPost } from "../apiManager"
 
@@ -6,14 +6,16 @@ import { uploadPost } from "../apiManager"
 export const PostForm = ({ setcreatepost, syncPosts, postId, postToEdit, updatedPost, setUpdatedPost, handleEditOfPost}) => {
     const [newPost, setNewPost] = useState({})
     const history = useHistory()
+    const problem = useRef(null)
+    const problemDescription = useRef(null)
 
     const handlePost = (evt) => {
         evt.preventDefault()
         
         const newPostObj = {
             userId: parseInt(localStorage.getItem('code_user')),
-            problem: newPost.problem,
-            problemDescription: newPost.problemDescription
+            problem: problem.current.value,
+            problemDescription: problemDescription.current.value
         }
 
         uploadPost(newPostObj)
@@ -50,19 +52,12 @@ export const PostForm = ({ setcreatepost, syncPosts, postId, postToEdit, updated
             </div>
             : <div className="post__form"><div>
             <label>Describe Your Problem</label>
-            <input onChange={(evt) => {
-                const copy = {...newPost}
-                copy.problemDescription = evt.target.value
-                setNewPost(copy)
-            }} type="text" id="problem_descrip" placeholder="Describe Your Problem Here"  required autoFocus />
+            <input type="text" ref={problemDescription} placeholder="Describe Your Problem Here" required autoFocus />
         </div>
         <div>
             <label>Copy and Paste your problem here</label>
-            <input onChange={(evt) => {
-                const copy = {...newPost}
-                copy.problem = evt.target.value
-                setNewPost(copy)
-            }} type="text" id="problem_paste" placeholder="Paste Here"  required autoFocus />
+            <input type="text" ref={problem} placeholder="Past Here" required autoFocus />
+
         </div>
         
         <div>
