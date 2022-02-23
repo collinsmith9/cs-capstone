@@ -18,7 +18,7 @@ export const NavBar = (props) => {
                 <Link className="navbar__link" to="#"
                 onClick={
                     () => {
-                        localStorage.removeItem("code_user")
+                        localStorage.clear()
                     }
                 }>Logout</Link>
             </li>

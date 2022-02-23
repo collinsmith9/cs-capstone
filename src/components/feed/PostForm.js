@@ -13,7 +13,7 @@ export const PostForm = ({ setcreatepost, syncPosts, postId, postToEdit, updated
         evt.preventDefault()
         
         const newPostObj = {
-            userId: parseInt(localStorage.getItem('code_user')),
+            user: parseInt(localStorage.getItem('code_user')),
             problem: problem.current.value,
             problemDescription: problemDescription.current.value
         }
