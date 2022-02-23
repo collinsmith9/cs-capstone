@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { deletePost, employeeCheck, getPostsWithUser } from "../apiManager"
+import { deletePost, employeeCheck, getPosts, getPostsWithUser } from "../apiManager"
 import { PostForm } from "./PostForm"
 import './Feed.css'
 import { useHistory } from "react-router-dom"
@@ -13,27 +13,27 @@ export const Feed = () => {
 
     
     useEffect(() => {
-        getPostsWithUser()
+        getPosts()
         .then(setPosts)
         
     },
     []
     )
     
-    useEffect(() => {
-        employeeCheck(+localStorage.getItem('code_user'))
-        .then(setIsEmployee)
+    // useEffect(() => {
+    //     employeeCheck(+localStorage.getItem('code_user'))
+    //     .then(setIsEmployee)
         
-    },
-    [])
+    // },
+    // [])
     
     const syncPosts = () => {
-        getPostsWithUser()
+        getPosts()
         .then(setPosts)
     }
 
     const isItTheirPost = (x) => {
-        if (x.userId === +localStorage.getItem('code_user')) { 
+        if (x.user.id === +localStorage.getItem('code_user')) { 
             return true
         }
         return false
