@@ -70,7 +70,7 @@ export const deleteHelpRequest = (id) => {
 }
 
 export const deletePost = (id) => {
-    return fetch(`http://localhost:8088/posts/${id}`, {method: "DELETE"})
+    return fetch(`http://localhost:8000/posts/${id}`, {method: "DELETE", headers: {'Content-Type': 'application/json', "Authorization": `Token ${localStorage.getItem('token')}`}})
 
 }
 
@@ -92,7 +92,7 @@ export const fetchEditHelpRequest = (id) => {
 }
 
 export const getPostToEdit = (id) => {
-    return fetch(`http://localhost:8088/posts/${id}`)
+    return fetch(`http://localhost:8000/posts/${id}`, {headers: {"Content-Type": "application/json", "Authorization": `Token ${localStorage.getItem('token')}`}})
     .then(res => res.json())
 
 }

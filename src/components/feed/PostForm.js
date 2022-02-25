@@ -34,7 +34,7 @@ export const PostForm = ({ setcreatepost, syncPosts, postId, postToEdit, updated
                     const copy = {...updatedPost}
                     copy.problemDescription = evt.target.value
                     setUpdatedPost(copy)
-                }} type="text" id="problem_descrip" placeholder={postToEdit.problemDescription}  required autoFocus />
+                }} type="text" id="problem_descrip" defaultValue={postToEdit.problemDescription}  required autoFocus />
             </div>
             <div>
                 <label>Copy and Paste your problem here</label>
@@ -42,7 +42,7 @@ export const PostForm = ({ setcreatepost, syncPosts, postId, postToEdit, updated
                     const copy = {...updatedPost}
                     copy.problem = evt.target.value
                     setUpdatedPost(copy)
-                }} type="text" id="problem_paste" placeholder={postToEdit.problem}  required autoFocus />
+                }} type="text" id="problem_paste" defaultValue={postToEdit.problem}  required autoFocus />
             </div>
             
             <div>
