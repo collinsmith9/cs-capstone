@@ -29,13 +29,14 @@ export const EditPost = () => {
         const editedPost = {
             problemDescription: updatedPost.problemDescription,
             problem: updatedPost.problem,
-            userId: updatedPost.userId
+            user: updatedPost.user.id
         }
 
-        fetch(`http://localhost:8088/posts/${postId}`, {
+        fetch(`http://localhost:8000/posts/${postId}`, {
         method: "PUT",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem('token')}`
         },
         body: JSON.stringify(editedPost)
     }).then(() => {

@@ -64,7 +64,7 @@ export const Feed = () => {
             !! isEmployee[0]?.partner
             ? posts.map((post) => {
                 return <div key={`post--${post.id}`} className="post">
-                <div><h4>Posted by {post.user.name}</h4>
+                <div><h4>Posted by {post.user.user.first_name}</h4>
                 <h5>Problem descrip: {post.problemDescription}</h5>
                 <p>Problem: {post.problem}</p><button onClick={() => {
                     deletePost(post.id)
@@ -77,7 +77,7 @@ export const Feed = () => {
                 </div>}).reverse()
             : posts.map((post) => {
                 return <fieldset key={`post--${post.id}`}  className="post">
-                <div><h4>Posted by {post.user.name}</h4>
+                <div><h4>Posted by {post.user.user.first_name}</h4>
                 <h5>Problem descrip: {post.problemDescription}</h5>
                 <p>Problem: {post.problem}</p>
                 { 
