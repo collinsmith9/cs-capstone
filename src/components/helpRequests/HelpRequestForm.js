@@ -1,31 +1,39 @@
 import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router"
-import { getEmployees, uploadHelpRequest } from "../apiManager"
+import { getEmployees, getUsers, uploadHelpRequest } from "../apiManager"
 
 
 
 
 export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, syncHelpRequests, hrId, placeholder, setPlaceHolder, updatedHelpRequest, setUpdatedHelpRequest, handleEdit}) => {
     const [newHelpRequest, setNewHelpRequest] = useState({})
-    const [employees, setEmployees] = useState([])
+    const [users, setUsers] = useState([])
     const history = useHistory()
 
     useEffect(() => {
-        getEmployees()
-        .then(setEmployees)
+        getUsers()
+        .then(setUsers)
 
     },
     [])
+
+    const employees = users.filter((user) => {
+        if (user?.user?.is_staff === true) {
+            return true
+        }
+        return false
+    })
+    console.log(employees)
 
 
     const handleNewHelpRequest = (evt) => {
         evt.preventDefault()
         
         const newHelpRequestObj = {
-            userId: parseInt(localStorage.getItem('code_user')),
+            user: parseInt(localStorage.getItem('code_user')),
             problem: newHelpRequest.problem,
             problemDescription: newHelpRequest.problemDescription,
-            employeeId: parseInt(newHelpRequest.employeeId)
+            employee: parseInt(newHelpRequest.employeeId)
         }
 
         uploadHelpRequest(newHelpRequestObj)
@@ -53,6 +61,7 @@ export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, 
                     <input onChange={(evt) => {
                         const copy = {...updatedHelpRequest}
                         copy.problem = evt.target.value
+                        copy.userId = +localStorage.getItem('code_user')
                         setUpdatedHelpRequest(copy)
                     }} type="text" id="problem_paste" placeholder={placeholder.problem}  required autoFocus />
                 </div>
@@ -66,7 +75,7 @@ export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, 
                        <option value="0">Select an employee</option>
                        {
                            employees.map((employee) => {
-                               return <option key={`employee--${employee.id}`} value={employee.id}>{employee.name}</option>
+                               return <option key={`employee--${employee.id}`} value={employee.id}>{employee.user?.first_name}</option>
                            })
                        }
                    </select>
@@ -111,7 +120,7 @@ export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, 
                        <option value="0">Select an employee</option>
                        {
                            employees.map((employee) => {
-                               return <option key={`employeee--${employee.id}`} value={employee.id}>{employee.name}</option>
+                               return <option key={`employeee--${employee.id}`} value={employee.id}>{employee.user.first_name}</option>
                            })
                        }
                    </select>

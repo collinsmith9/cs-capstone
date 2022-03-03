@@ -33,12 +33,12 @@ export const UserProfile = () => {
     return (
         <>
 
-        <div className="userprofile__header"><h1> {currentUser?.name}'s Profile</h1></div>
+        <div className="userprofile__header"><h1> {currentUser?.user?.first_name}'s Profile</h1></div>
 
         {
             usersPosts.map((post) => {
                 return <fieldset key={`post--${post.id}`} className="userprofile__post">
-                <div><h4>Posted by {post?.user?.name}</h4>
+                <div><h4>Posted by {post?.user?.user?.first_name}</h4>
                 <h5>Problem descrip: {post?.problemDescription}</h5>
                 <p>Problem: {post?.problem}</p><button  onClick={() => {
                     deletePost(post.id)

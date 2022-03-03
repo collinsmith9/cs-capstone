@@ -20,22 +20,35 @@ export const EditHelpRequest = () => {
 
     },
     [hrId])
+
+    useEffect(() => {
+        const copy = {...updatedHelpRequest}
+        copy.employeeId = updatedHelpRequest.employee?.id
+        setUpdatedHelpRequest(copy)
+    },[hrId])
     
     const handleEdit = (e) => {
         e.preventDefault()
 
+        if (updatedHelpRequest.employeeId) {
+            const copy = {...updatedHelpRequest}
+            copy.employeeId = updatedHelpRequest.employee?.id
+            setUpdatedHelpRequest(copy)
+        }
+
     const editedHR = {
-        employeeId: updatedHelpRequest.employeeId,
+        employee: updatedHelpRequest.employeeId,
         problem: updatedHelpRequest.problem,
         problemDescription: updatedHelpRequest.problemDescription,
-        userId: updatedHelpRequest.userId
+        user: updatedHelpRequest.userId
     }
 
 
-    fetch(`http://localhost:8088/helpRequests/${hrId}`, {
+    fetch(`http://localhost:8000/helprequests/${hrId}`, {
         method: "PUT",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem('token')}`
         },
         body: JSON.stringify(editedHR)
     }).then(() => {

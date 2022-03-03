@@ -43,28 +43,34 @@ export const uploadHelpRequest = (helpRequest) => {
     const fetchOptions = {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem('token')}`
         },
         body: JSON.stringify(helpRequest)
     }
-    return fetch(`http://localhost:8088/helpRequests`, fetchOptions)
+    return fetch(`http://localhost:8000/helprequests`, fetchOptions)
     .then(response => response.json())
 
 }
 
 export const getHelpRequestsWithUser = () => {
-    return fetch(`http://localhost:8088/helpRequests?_expand=user`)
+    return fetch(`http://localhost:8000/helprequests`, {headers: {'Authorization': `Token ${localStorage.getItem('token')}`}})
     .then(res => res.json())
 
 }
 
 export const getEmployees = () => {
-    return fetch(`http://localhost:8088/users?partner=true`)
+    return fetch(`http://localhost:8000/users?is_staff=1`, {headers: {"Authorization": `Token ${localStorage.getItem('token')}`}})
+    .then(res => res.json())
+}
+
+export const getUsers = () => {
+    return fetch(`http://localhost:8000/users`, {headers: {"Authorization": `Token ${localStorage.getItem('token')}`}})
     .then(res => res.json())
 }
 
 export const deleteHelpRequest = (id) => {
-    return fetch(`http://localhost:8088/helpRequests/${id}`, {method: "DELETE"})
+    return fetch(`http://localhost:8000/helprequests/${id}`, {method: "DELETE", headers: {'Content-Type': 'application/json', "Authorization": `Token ${localStorage.getItem('token')}`}})
 
 
 }
@@ -75,7 +81,7 @@ export const deletePost = (id) => {
 }
 
 export const getUsersHelpRequests = (id) => {
-    return fetch(`http://localhost:8088/helpRequests?userId=${id}&_expand=user`)
+    return fetch(`http://localhost:8000/helprequests?user=${id}`, {headers: {"Authorization": `Token ${localStorage.getItem('token')}`}})
     .then(res => res.json())
 }
 
@@ -87,7 +93,7 @@ export const employeeCheck = (id) => {
 
 
 export const fetchEditHelpRequest = (id) => {
-    return fetch(`http://localhost:8088/helpRequests/${id}`)
+    return fetch(`http://localhost:8000/helprequests/${id}`, {headers: {"Authorization": `Token ${localStorage.getItem('token')}`}})
     .then(res => res.json())
 }
 
@@ -98,10 +104,11 @@ export const getPostToEdit = (id) => {
 }
 
 export const saveEditOfHelpRequest = (id, editOptions, sync) => {
-    fetch(`http://localhost:8088/helpRequests/${id}`, {
+    fetch(`http://localhost:8088/helprequests/${id}`, {
         method: "PUT",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Token ${localStorage.getItem('token')}`
         },
         body: JSON.stringify(editOptions)
     })
@@ -121,11 +128,11 @@ export const saveEditOfPost = (id, editOptions, sync) => {
 }
 
 export const getAUsersPosts = (id) => {
-    return fetch(`http://localhost:8088/posts?_expand=user&userId=${id}`)
+    return fetch(`http://localhost:8000/posts?user=${id}`, {headers: {"Authorization": `Token ${localStorage.getItem('token')}`}})
     .then(res => res.json())
 }
 
 export const getUser = (id) => {
-    return fetch(`http://localhost:8088/users?id=${id}`)
+    return fetch(`http://localhost:8000/users/${id}`, {headers: {"Authorization": `Token ${localStorage.getItem('token')}`}})
     .then(res => res.json())
 }

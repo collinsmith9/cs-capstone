@@ -34,12 +34,12 @@ export const HelpRequest = () => {
     },
     [])
 
-    useEffect(() => {
-        employeeCheck(parseInt(localStorage.getItem('code_user')))
-        .then(setIsEmployee)
+    // useEffect(() => {
+    //     employeeCheck(parseInt(localStorage.getItem('code_user')))
+    //     .then(setIsEmployee)
 
-    },
-    [])
+    // },
+    // [])
 
     const syncHelpRequests = () => {
         getUsersHelpRequests(parseInt(localStorage.getItem('code_user')))
@@ -83,14 +83,14 @@ export const HelpRequest = () => {
         <>
         {
             
-            !! isEmployee[0]?.partner 
+            !! localStorage.getItem('isEmployee') === "true"
             ? <div className="hr__header"><h1>Help Requests</h1></div>
             : <div className="hr__header"><h1 className="newHR__button">Your Help Requests</h1></div>
             
         }
 
         {
-            !! isEmployee[0]?.partner
+            !! localStorage.getItem('isEmployee')
             ? ""
             : <div className="newhr__button"><button onClick={ () => {setNewHelpRequestExists(true)}}>new help request</button></div>
         }
@@ -103,13 +103,13 @@ export const HelpRequest = () => {
 
             {
                 
-                !! isEmployee[0]?.partner
+                !! localStorage.getItem('isEmployee')
                 ? helpRequests.map((hr) => {
                     return <fieldset key={`hr--${hr.id}`} className="helpRequest">
-                       <div><h4>Posted by {hr.user.name}</h4>
+                       <div><h4>Posted by {hr.user.user.first_name}</h4>
                        <h5>Problem descrip: {hr.problemDescription}</h5>
                        <p>Problem: {hr.problem}</p>
-                       <h5>Current Employee: {getEmployeeObj(hr.employeeId)}</h5>
+                       <h5>Current Employee: {hr.employee.user.first_name}</h5>
                        
                        </div><div><button onClick={() => {
                            deleteHelpRequest(hr.id)
@@ -129,10 +129,10 @@ export const HelpRequest = () => {
                 }).reverse()
                 : userHelpRequests.map((hr) => {
                     return <fieldset key={`hr--${hr.id}`} className="helpRequest">
-                       <div><h4>Posted by {hr.user.name}</h4>
+                       <div><h4>Posted by {hr.user.user.first_name}</h4>
                        <h5>Problem descrip: {hr.problemDescription}</h5>
                        <p>Problem: {hr.problem}</p>
-                       <h5>Current Employee: {getEmployeeObj(hr.employeeId)}</h5>
+                       <h5>Current Employee: {hr.employee.user.first_name}</h5>
                        </div><div><button onClick={() => {
                            deleteHelpRequest(hr.id)
                            .then(() => syncHelpRequests())
