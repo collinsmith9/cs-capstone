@@ -61,7 +61,7 @@ export const Feed = () => {
             : ""
         }
         {
-            !! isEmployee[0]?.partner
+            !! JSON.parse(localStorage.getItem('isEmployee')) === true
             ? posts.map((post) => {
                 return <div key={`post--${post.id}`} className="post">
                 <div><h4>Posted by {post.user.user.first_name}</h4>

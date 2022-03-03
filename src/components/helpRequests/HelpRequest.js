@@ -83,14 +83,14 @@ export const HelpRequest = () => {
         <>
         {
             
-            !! localStorage.getItem('isEmployee') === "true"
+            !! JSON.parse(localStorage.getItem('isEmployee')) === true
             ? <div className="hr__header"><h1>Help Requests</h1></div>
             : <div className="hr__header"><h1 className="newHR__button">Your Help Requests</h1></div>
             
         }
 
         {
-            !! localStorage.getItem('isEmployee')
+            !! JSON.parse(localStorage.getItem('isEmployee')) === true
             ? ""
             : <div className="newhr__button"><button onClick={ () => {setNewHelpRequestExists(true)}}>new help request</button></div>
         }
@@ -103,7 +103,7 @@ export const HelpRequest = () => {
 
             {
                 
-                !! localStorage.getItem('isEmployee')
+                !! JSON.parse(localStorage.getItem('isEmployee')) === true
                 ? helpRequests.map((hr) => {
                     return <fieldset key={`hr--${hr.id}`} className="helpRequest">
                        <div><h4>Posted by {hr.user.user.first_name}</h4>
