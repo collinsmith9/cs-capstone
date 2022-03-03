@@ -69,7 +69,7 @@ export const HelpRequestForm = ({newHelpRequestExists, setNewHelpRequestExists, 
                     <label>Select the employee you'd like</label>
                    <select onChange={(evt) => {
                        const copy = {...updatedHelpRequest}
-                       copy.employeeId = parseInt(evt.target.value)
+                       copy.employee.id = parseInt(evt.target.value)
                        setUpdatedHelpRequest(copy)
                    }}className="employeedropdown">
                        <option value="0">Select an employee</option>

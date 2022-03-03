@@ -21,23 +21,24 @@ export const EditHelpRequest = () => {
     },
     [hrId])
 
-    useEffect(() => {
-        const copy = {...updatedHelpRequest}
-        copy.employeeId = updatedHelpRequest.employee?.id
-        setUpdatedHelpRequest(copy)
-    },[hrId])
-    
-    const handleEdit = (e) => {
-        e.preventDefault()
 
-        if (updatedHelpRequest.employeeId) {
+    const checkEmployeeNull = () => {
+        if (updatedHelpRequest.employeeId !== undefined) {
+            console.log("ok")
+        } else {
             const copy = {...updatedHelpRequest}
-            copy.employeeId = updatedHelpRequest.employee?.id
+            copy.employeeId = helpRequest.employee?.id
             setUpdatedHelpRequest(copy)
         }
 
+    }
+    
+    const handleEdit = (e) => {
+        e.preventDefault()
+        
+
     const editedHR = {
-        employee: updatedHelpRequest.employeeId,
+        employee: updatedHelpRequest.employee.id,
         problem: updatedHelpRequest.problem,
         problemDescription: updatedHelpRequest.problemDescription,
         user: updatedHelpRequest.userId
